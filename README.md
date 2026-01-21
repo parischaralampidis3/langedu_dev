@@ -11,4 +11,9 @@ cd Scripts
 install Django
 --------------
 
+python -m pip install django
+
+(.venv) $ django-admin startproject <project-name>
+
+python manage.py startapp <appname>
 
