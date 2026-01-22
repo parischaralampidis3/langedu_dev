@@ -1,3 +1,3 @@
 superuser:
 name : admin
-password: admin_paris
+password: adminparis
