@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'langedu_app',
 ]
 
 MIDDLEWARE = [
@@ -74,8 +75,12 @@ WSGI_APPLICATION = 'langedu.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dev_langedu',
+        'USER': 'languser_dev',
+        'PASSWORD': 'languser_dev',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
