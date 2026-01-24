@@ -19,6 +19,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('textquestions/', include('urls.questions')),
-    path('textquestioncontainers/', include('urls.question_containers'))
+    path('api/', include('langedu_app.urls')),l
 ]
