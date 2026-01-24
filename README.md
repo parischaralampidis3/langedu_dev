@@ -76,3 +76,23 @@ ALTER ROLE languser_dev SET default_transaction_isolation TO 'read committed';
 ALTER ROLE languser_dev SET timezone TO 'UTC';
 
 
+API endpoints
+-------------
+
+GET http://127.0.0.1:8000/api/container/
+POST http://127.0.0.1:8000/api/question/  { "question_number_id": 1, "title": "Sample?" }
+GET http://127.0.0.1:8000/api/question/1/
+PUT http://127.0.0.1:8000/api/container/1/  { "title": "Updated container" }
+DELETE http://127.0.0.1:8000/api/question/1/
+
+
+GET /api/container/ → list containers
+
+POST /api/container/ → create container
+
+GET /api/container/1/ → get container #1
+
+PUT /api/container/1/ → update container #1
+
+DELETE /api/container/1/ → delete container #1
+

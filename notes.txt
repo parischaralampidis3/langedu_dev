@@ -1,3 +1,25 @@
 superuser:
 name : admin
 password: adminparis
+
+
+
+  """
+def textQuestionContainerList(request):
+    textQuestionContainer = TextQuestionContainer.objects.all()
+    return render(request, './textQuestionContainer/textQuestionContainer.html',{'textQuestionContainer':textQuestionContainer})
+
+def textQuestion(request, pk):
+    textQuestion = get_object_or_404(TextQuestion, pk=pk)
+    return render(request, './textQuestion/textQuestion.html',{'textQuestion':textQuestion})
+
+
+def textQuestionList(request):
+    textQuestionList = TextQuestion.objects.all()
+    return render(request, './textQuestionList/textQuestionList.html',{'textQuestionList':textQuestionList})
+    """
+
+
+from rest_framework import generics
+
+
