@@ -40,3 +40,8 @@ class TextQuestion(models.Model):
     def __str__(self):
         return self.title
 
+class TextResponse(models.Model):
+    response_number_id = models.IntegerField()
+    response_text = models.TextField()
+    creeated_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
