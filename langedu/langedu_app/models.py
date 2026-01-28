@@ -43,5 +43,28 @@ class TextQuestion(models.Model):
 class TextResponse(models.Model):
     response_number_id = models.IntegerField()
     response_text = models.TextField()
-    creeated_at = models.DateTimeField(auto_now_add=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    text_question = models.ForeignKey(
+        TextQuestion,
+        on_delete = models.CASCADE,
+        related_name='text_responses'
+    )
+    
+    class Meta:
+        ordering = ['response_number_id']
+        constraints = [
+             models.UniqueConstraint(
+                 fields = ['response_number_id', 'text_question'],
+                 name = 'unique_response_per_question'
+             )
+        ]
+
+    def __str__(self):
+        return self.response_text[:50]  # Return first 50 characters of the response text
+        
+
+        
+        
