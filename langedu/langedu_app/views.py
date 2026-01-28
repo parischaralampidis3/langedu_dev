@@ -1,6 +1,6 @@
 from rest_framework import generics
-from .serializers import TextQuestionContainerSerializer, TextQuestionSerializer
-from .models import TextQuestionContainer, TextQuestion
+from .serializers import TextQuestionContainerSerializer, TextQuestionSerializer, TextResponseSerializer
+from .models import TextQuestionContainer, TextQuestion, TextResponse
 
 # Create your views here.
 #texquestion container views
@@ -22,3 +22,16 @@ class TextQuestionListCreateView(generics.ListCreateAPIView):
 class TextQuestionRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = TextQuestion.objects.all()
     serializer_class = TextQuestionSerializer 
+
+
+#textresponse views
+
+class TextResponseListCreateView(generics.ListCreateAPIView):
+    queryset = TextResponse.objects.all()
+    serializer_class = TextResponseSerializer
+
+class TextResponseRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = TextResponse.objects.all()
+    serializer_class = TextResponseSerializer
+    
+    
