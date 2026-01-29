@@ -16,4 +16,4 @@ class TextQuestionContainerSerializer(serializers.ModelSerializer):
 class TextResponseSerializer(serializers.ModelSerializer):
     class Meta:
         model = TextResponse
-        fields = ['id', 'response_number_id', 'response_text', 'created_at', 'updated_at']
+        fields = ['id',  'response_text', 'created_at', 'updated_at']

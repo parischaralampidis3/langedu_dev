@@ -41,7 +41,7 @@ class TextQuestion(models.Model):
         return self.title
 
 class TextResponse(models.Model):
-    response_number_id = models.IntegerField()
+   
     response_text = models.TextField()
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -54,13 +54,7 @@ class TextResponse(models.Model):
     )
     
     class Meta:
-        ordering = ['response_number_id']
-        constraints = [
-             models.UniqueConstraint(
-                 fields = ['response_number_id', 'text_question'],
-                 name = 'unique_response_per_question'
-             )
-        ]
+        ordering = ['created_at']
 
     def __str__(self):
         return self.response_text[:50]  # Return first 50 characters of the response text
