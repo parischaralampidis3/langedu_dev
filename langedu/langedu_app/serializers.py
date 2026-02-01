@@ -4,7 +4,7 @@ from .models import TextQuestionContainer, TextQuestion, TextResponse
 class TextQuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = TextQuestion
-        fields = ['id', 'question_number_id', 'title', 'is_active', 'created_at', 'updated_at']
+        fields = ['id', 'question_number_id', 'title', 'is_active','text_question_container','created_at', 'updated_at']
 
 
 class TextQuestionContainerSerializer(serializers.ModelSerializer):

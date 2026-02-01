@@ -20,7 +20,6 @@ urlpatterns = [
         path('response/', TextResponseListCreateView.as_view(), name='textResponseListCreate'),
         path('response/<int:pk>/', TextResponseRetrieveUpdateDestroyView.as_view(), name='textResponseRetrieveUpdateDestroy'),
 
-        path('question/<int:question_id/responses>/', TextResponseListCreateView.as_view(), name= 'textResponseListCreate')
-        
+        path('question/<int:question_id>/responses/', TextResponseListCreateView.as_view(), name= 'text-response-list-dreate')
 
     ]
