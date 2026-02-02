@@ -1,0 +1,121 @@
+#which endpoints are public
+
+#which field are required on create
+
+POST -> strict
+PATCH -> flexible 
+PUT -> full replacement 
+
+#what clients are allowed to edit.
+
+#what must the client send?
+
+#what may the client send?
+
+#what will the server always return
+
+#what errors are guaranteed?
+
+clients are rely on:
+
+-status code
+-error shapes
+-validation messages
+
+#what is forbidden?
+
+#who is allowed to use?
+
+Public(no auth)
+But still restricted by behaviour
+
+#Example:
+
+Educator submits → POST /response/
+
+Admin edits question → PATCH /question/:id/
+
+TextQuestionContainer
+
+### POST /http://127.0.0.1:8000/api/container
+
+purpose: Admin creates a text question container
+
+# Optional Values
+-description 
+
+-is_active
+
+# Mandatory values
+-title
+
+# Editable fields
+-title
+
+-description 
+
+-is_active
+
+### PATCH /http://127.0.0.1:8000/api/container
+
+purpose: Admin edits a field of a text question container
+
+# Editable fields
+
+-title 
+
+-description
+
+# Non Editable fields
+
+-is_active
+
+-----------------------------------------
+
+TextQuestion 
+------------
+
+### POST /http://127.0.0.1:8000/api/question
+
+purpose: Admin creates text question
+
+# Optional values
+
+-is_active
+
+# Mandatory values
+
+-title 
+
+-text_question_container
+
+-question_number_id
+
+# Editable fields
+
+-title
+-is_active
+
+# Immutable fields
+
+-question_number_id
+-text_question_container
+
+
+### PATCH /http://127.0.0.1:8000/api/question/2/
+
+purpose:  An educator can edit a single text question 
+
+# Optional values 
+
+-title
+-is_active
+
+# Not editable
+
+-question_number_id
+-text_question_container
+
+------------------------------------------
+
+
