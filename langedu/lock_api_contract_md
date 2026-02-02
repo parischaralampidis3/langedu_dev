@@ -117,5 +117,34 @@ purpose:  An educator can edit a single text question
 -text_question_container
 
 ------------------------------------------
+TextResponse 
+------------
+
+### POST / http://127.0.0.1:8000/api/question/1/responses/
+
+purpose: A response is submitted by a user that has a role of student
+
+# Optional values
+
+- response_number_id
+
+# Mandatory Values
+
+- response_text
+- text_question
+
+# Mutable Values
+
+- response_text
+- text_question
+
+# Non Imutable values
+
+- response_number_id
+
+
+### PATCH /http://127.0.0.1:8000/api/question/1/responses
+
+purpose: A specific response can be edit by a student, before final submitting
 
 
