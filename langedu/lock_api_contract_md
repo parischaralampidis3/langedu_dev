@@ -1,88 +1,71 @@
-#which endpoints are public
+# which endpoints are public
+All endpoints are public.
+Allowed HTTP methods are restricted per endpoint.
 
-GET
-
-#which field are required on create
-
+# which field are required on create
 POST -> strict
 PATCH -> flexible 
-PUT -> full replacement 
+PUT -> not supported in v1.
 
-#what clients are allowed to edit.
+# Request / Response format
 
-The client are allowed to edit text question responses by a student role.
+Clients send JSON requests
 
-#what must the client send?
-A client must return a get request when it is requested.
+Server returns JSON responses
 
-#what may the client send?
+# what clients are allowed to edit.
 
-A client may return json api request for development use.
+Edit permissions are defined per resource and per endpoint.
 
-#what will the server always return
 
-The server wil return GET requests.
-The server will return list of responses per questions for the role of educator
-The server will return list of assigned questions for the role of student
 
-#what errors are guaranteed?
+
+# what errors are guaranteed?
 
 clients are rely on:
 
--status code
--error shapes
+-HTTP status code
+-consistent error shapes
 -validation messages
 
-#what is forbidden?
-It is forbiddened, to a user with role of student to delete a question that is assigned. 
-It is forbidenned to a user with role of student to submit two different responses for a specific questions.
-It is forbidenned to a user with role of educator to change or edit submitted responses.
+# what is forbidden?
 
-#who is allowed to use?
+It is forbidenned  a response request of two different responses, to be submitted for a specific question.
+
+
+# who is allowed to use?
 
 Public(no auth)
 But still restricted by behaviour
 
-#Example:
 
-Educator submits → POST /response/
-
-Admin edits question → PATCH /question/:id/
 
 TextQuestionContainer
 
 ### POST /http://127.0.0.1:8000/api/container
 
-purpose: Admin creates a text question container
-
-# Optional Values
--description 
-
--is_active
+purpose: Create a text question container
 
 # Mandatory values
 -title
 
-# Editable fields
--title
+# Optional Values
+-description 
+-is_active
 
+# Editable fields via PATCH
+-title
 -description 
 
--is_active
 
 ### PATCH /http://127.0.0.1:8000/api/container
 
-purpose: Admin edits a field of a text question container
+purpose: Edit a text question container
 
 # Editable fields
 
 -title 
-
 -description
-
-# Non Editable fields
-
--is_active
 
 -----------------------------------------
 
@@ -91,11 +74,7 @@ TextQuestion
 
 ### POST /http://127.0.0.1:8000/api/question
 
-purpose: Admin creates text question
-
-# Optional values
-
--is_active
+purpose: Create a text question
 
 # Mandatory values
 
@@ -105,7 +84,11 @@ purpose: Admin creates text question
 
 -question_number_id
 
-# Editable fields
+# Optional values
+
+-is_active
+
+# Editable fields via PATCH
 
 -title
 -is_active
@@ -116,55 +99,42 @@ purpose: Admin creates text question
 -text_question_container
 
 
-### PATCH /http://127.0.0.1:8000/api/question/2/
+### PATCH /api/question/{id}/
 
-purpose:  An educator can edit a single text question 
+purpose:  Edit a text question
 
-# Optional values 
+# Editable
 
 -title
 -is_active
 
-# Not editable
-
--question_number_id
--text_question_container
-
 ------------------------------------------
+
 TextResponse 
 ------------
 
-### POST / http://127.0.0.1:8000/api/question/1/responses/
+### POST /api/question/{question_id}/responses/
 
-purpose: A response is submitted by a user that has a role of student
-
-# Optional values
-
-- response_number_id
+purpose: Submit a response
 
 # Mandatory Values
-
 - response_text
-- text_question
 
-# Mutable Values
-
-- response_text
-- text_question
-
-# Non Imutable values
-
-- response_number_id
-
-
-### PATCH /http://127.0.0.1:8000/api/question/1/responses
-
-purpose: A specific response can be edit by a student, before final submitting
 
 # Optional values
 
-- text_question
 - response_number_id
+
+# Immutable values
+
+- response_number_id
+
+
+###   PATCH /api/response/{id}/
+
+
+purpose: Edit a response 
+
 
 # Editable values
 
