@@ -1,5 +1,7 @@
 #which endpoints are public
 
+GET
+
 #which field are required on create
 
 POST -> strict
@@ -8,11 +10,20 @@ PUT -> full replacement
 
 #what clients are allowed to edit.
 
+The client are allowed to edit text question responses by a student role.
+
 #what must the client send?
+A client must return a get request when it is requested.
 
 #what may the client send?
 
+A client may return json api request for development use.
+
 #what will the server always return
+
+The server wil return GET requests.
+The server will return list of responses per questions for the role of educator
+The server will return list of assigned questions for the role of student
 
 #what errors are guaranteed?
 
@@ -23,6 +34,9 @@ clients are rely on:
 -validation messages
 
 #what is forbidden?
+It is forbiddened, to a user with role of student to delete a question that is assigned. 
+It is forbidenned to a user with role of student to submit two different responses for a specific questions.
+It is forbidenned to a user with role of educator to change or edit submitted responses.
 
 #who is allowed to use?
 
@@ -147,4 +161,17 @@ purpose: A response is submitted by a user that has a role of student
 
 purpose: A specific response can be edit by a student, before final submitting
 
+# Optional values
 
+- text_question
+- response_number_id
+
+# Editable values
+
+- response_text
+
+
+# Non editable values
+
+- text_question
+- response_number_id
