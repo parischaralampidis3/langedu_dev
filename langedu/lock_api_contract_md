@@ -10,7 +10,6 @@ PUT -> not supported in v1.
 # Request / Response format
 
 Clients send JSON requests
-
 Server returns JSON responses
 
 # what clients are allowed to edit.
@@ -18,11 +17,9 @@ Server returns JSON responses
 Edit permissions are defined per resource and per endpoint.
 
 
-
-
 # what errors are guaranteed?
 
-clients are rely on:
+clients can rely on:
 
 -HTTP status code
 -consistent error shapes
@@ -30,7 +27,7 @@ clients are rely on:
 
 # what is forbidden?
 
-It is forbidenned  a response request of two different responses, to be submitted for a specific question.
+Submitting more than one response for the same question is forbidden.
 
 
 # who is allowed to use?
@@ -42,7 +39,7 @@ But still restricted by behaviour
 
 TextQuestionContainer
 
-### POST /http://127.0.0.1:8000/api/container
+### POST /api/container
 
 purpose: Create a text question container
 
@@ -58,7 +55,7 @@ purpose: Create a text question container
 -description 
 
 
-### PATCH /http://127.0.0.1:8000/api/container
+### PATCH /api/container/{id}
 
 purpose: Edit a text question container
 
@@ -72,7 +69,7 @@ purpose: Edit a text question container
 TextQuestion 
 ------------
 
-### POST /http://127.0.0.1:8000/api/question
+### POST /api/question
 
 purpose: Create a text question
 
@@ -131,7 +128,6 @@ purpose: Submit a response
 
 
 ###   PATCH /api/response/{id}/
-
 
 purpose: Edit a response 
 
